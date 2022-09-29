@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
-    // const logout=()=>{
-    //     localStorage.clear()
-    // }
+    const logout=()=>{
+        localStorage.clear()
+    }
   return (
     <nav className="bg-[rgb(31,41,55)]">
       {/* <div className="text-white container flex justify-between items-center p-4 mx-auto">
