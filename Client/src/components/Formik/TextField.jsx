@@ -17,6 +17,9 @@ const TextField = ({ label, ...props }) => {
           meta.touched && meta.error && "border-red-500"
         }`}
       />
+      <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+        <ErrorMessage name={field.name} />
+      </span>
     </>
   );
 };
