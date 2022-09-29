@@ -2,10 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "../components/Formik/TextField";
+import { LoginSchema } from "../validation/Login";
 
 const Login = () => {
+  const values={
+    email: "",
+    password: "",
+  }
+  // const onSubmit=async (values)=>{
+  //   alert(JSON.stringify(values,null,2))
+  // }
   return (
     <Formik
+    initialValues={values}
+      validationSchema={LoginSchema}
+      onSubmit={onSubmit}
     >
       {(formik)=>(
         <section className="bg-gray-50 dark:bg-gray-900">
