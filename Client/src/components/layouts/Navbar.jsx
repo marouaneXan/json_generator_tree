@@ -4,18 +4,18 @@ import { FiLogIn } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({user}) => {
 
     const logout=()=>{
         localStorage.clear()
     }
   return (
     <nav className="bg-[rgb(31,41,55)]">
-      {/* <div className="text-white container flex justify-between items-center p-4 mx-auto">
+      <div className="text-white container flex justify-between items-center p-4 mx-auto">
         <Link to={"/register"}>
           <h5 className="text-xl font-semibold">GoalSetter</h5>
         </Link>
-        {!connected ? (
+        {!user ? (
           <div>
             <Link
               to={"/login"}
@@ -42,7 +42,7 @@ const Navbar = () => {
             Logout
           </button>
         )}
-      </div> */}
+      </div>
     </nav>
   );
 };
