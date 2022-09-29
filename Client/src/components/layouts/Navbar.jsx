@@ -14,12 +14,12 @@ const Navbar = ({user}) => {
     })
   return (
     <nav className="bg-[rgb(31,41,55)]">
-      <div className="text-white container flex justify-between items-center p-4 mx-auto">
+      <div className="text-white  container flex justify-between items-center p-4 mx-auto">
         <Link to={user ? "/dashboard" : "/register"}>
-          <h5 className="text-xl font-semibold font-[cursive]">Json-Generator-Tree</h5>
+          <h5 className="font-medium font-[cursive] md:text-xl">Json-Generator-Tree</h5>
         </Link>
         {!user ? (
-          <div>
+          <div className="flex">
             <Link
               to={"/login"}
               className="font-medium text-sm px-5 py-2.5 text-center hover:text-gray-400 inline-flex items-center"
