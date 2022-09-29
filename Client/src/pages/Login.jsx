@@ -9,9 +9,9 @@ const Login = () => {
     email: "",
     password: "",
   }
-  // const onSubmit=async (values)=>{
-  //   alert(JSON.stringify(values,null,2))
-  // }
+  const onSubmit=async (values)=>{
+    alert(JSON.stringify(values,null,2))
+  }
   return (
     <Formik
     initialValues={values}
