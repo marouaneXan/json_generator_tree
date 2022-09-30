@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "../components/Formik/TextField";
 import { LoginSchema } from "../validation/Login";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const endPoint = "http://localhost:5000/api/v1/auth/login";
 const Login = (props) => {
+  const navigate = useNavigate();
   const values = {
     email: "",
     password: "",
@@ -23,9 +25,18 @@ const Login = (props) => {
         setTimeout(()=>{
           props.setError(null);
           props.setLoading(false);
-        })
+        },4000)
       }
     });
+    if(res && res.data){
+      props.setLoading(false)
+      props.setSuccess(res.data.message)
+      setTimeout(()=>{
+        setSuccess(null);
+        navigate("/dashboard");
+      })
+
+    }
   };
 
   return (
