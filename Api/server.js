@@ -8,7 +8,7 @@ const connectDB=require('./config/db')
 connectDB()
 
 //Routes
-app.use('/api/v1/')
+app.use('/api/v1/auth',require('./routes/authRoute'))
 
 
 
