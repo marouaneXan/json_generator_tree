@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const cors=require('cors')
+const {ErrorHandler}=require('./Middleware/ErrorMiddleware')
 const PORT = process.env.PORT || 5000;
 const app = express();
 
