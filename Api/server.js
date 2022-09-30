@@ -7,6 +7,10 @@ const app = express();
 const connectDB=require('./config/db')
 connectDB()
 
+//Routes
+app.use('/api/v1/')
+
+
 
 app.listen(PORT, () => {
   console.log(`Server connecting ${PORT}`);
