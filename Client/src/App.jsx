@@ -5,7 +5,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import { useState } from "react";
 function App() {
-  const [id, setId] = useState(localStorage.getItem("id"));
+  const [id, setId] = useState(localStorage.getItem("user_id"));
   const [success, setSuccess] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);

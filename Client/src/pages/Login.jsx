@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "../components/Formik/TextField";
 import { LoginSchema } from "../validation/Login";
@@ -31,11 +31,11 @@ const Login = (props) => {
     if(res && res.data){
       props.setLoading(false)
       props.setSuccess(res.data.message)
-      console.log(res);
+      localStorage.setItem('user_id',JSON.stringify(res.data.id))
       setTimeout(()=>{
         props.setSuccess(null);
-        // navigate("/dashboard");
-      })
+        navigate("/dashboard");
+      },4000)
     }
   };
 
