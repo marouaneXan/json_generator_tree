@@ -27,8 +27,9 @@ const register = asyncHandler(async (req, res) => {
     email,
     password: hashedPassword,
   });
-
-  
+  if (user) {
+    res.status(200).json(user)
+  }
 });
 module.exports = {
   register,
