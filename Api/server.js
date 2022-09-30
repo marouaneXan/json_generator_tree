@@ -15,7 +15,8 @@ app.use(express.urlencoded({extended:false}))
 //Routes
 app.use('/api/v1/auth',require('./routes/authRoute'))
 
-
+//Cors
+app.use(cors())
 
 app.listen(PORT, () => {
   console.log(`Server connecting ${PORT}`);
