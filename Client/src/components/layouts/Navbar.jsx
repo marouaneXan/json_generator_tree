@@ -5,8 +5,8 @@ import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const Navbar = ({user}) => {
-    const logout=(user)=>{
+const Navbar = ({id}) => {
+    const logout=()=>{
         localStorage.clear()
     }
     useEffect(()=>{
@@ -15,10 +15,10 @@ const Navbar = ({user}) => {
   return (
     <nav className="bg-[rgb(31,41,55)]">
       <div className="text-white  container flex justify-between items-center p-4 mx-auto">
-        <Link to={user ? "/dashboard" : "/register"}>
+        <Link to={id ? "/dashboard" : "/register"}>
           <h5 className="font-medium font-[cursive] md:text-xl">Json-Generator-Tree</h5>
         </Link>
-        {!user ? (
+        {!id ? (
           <div className="flex">
             <Link
               to={"/login"}

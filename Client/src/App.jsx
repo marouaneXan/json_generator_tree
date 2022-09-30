@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar user={user} />
+        <Navbar id={id} />
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route

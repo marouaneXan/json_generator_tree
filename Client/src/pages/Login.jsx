@@ -4,7 +4,8 @@ import { Formik, Form } from "formik";
 import TextField from "../components/Formik/TextField";
 import { LoginSchema } from "../validation/Login";
 
-const Login = () => {
+const Login = ({props}) => {
+  console.log(props);
   const values = {
     email: "",
     password: "",
