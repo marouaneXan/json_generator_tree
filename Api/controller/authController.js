@@ -31,6 +31,14 @@ const register = asyncHandler(async (req, res) => {
     res.status(200).json(user)
   }
 });
+
+//@desc POST login
+//@route /api/v1/auth/login
+//@access public
+const login = asyncHandler(async (req, res) => {
+  
+});
 module.exports = {
   register,
+  login
 };
