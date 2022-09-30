@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "../components/Formik/TextField";
 import { LoginSchema } from "../validation/Login";
+import axios from "axios";
 
-const Login = ({props}) => {
-  console.log(props);
+const Login = (props) => {
   const values = {
     email: "",
     password: "",
   };
   const onSubmit = async (values) => {
-    alert(JSON.stringify(values, null, 2));
+    props.setLoading(true)
   };
+
   return (
     <Formik
       initialValues={values}
