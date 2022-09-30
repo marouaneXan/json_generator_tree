@@ -29,6 +29,9 @@ const register = asyncHandler(async (req, res) => {
   });
   if (user) {
     res.status(200).json(user)
+  }else {
+    res.status(400);
+    throw new Error("Invalid user data");
   }
 });
 
@@ -42,6 +45,16 @@ const login = asyncHandler(async (req, res) => {
     throw new Error('Please add all fields')
   }
   const user=await User.findOne({email})
+  const verifyPassword=await bcrypt.compare(password,user.password)
+  if(user && verifyPassword){
+    res.status(201).json({
+      message:"Create new account successfully",
+      id:user._id
+    })
+  }else{
+    res.status(400)
+    throw new Error("Invalid user data");
+  }
 });
 module.exports = {
   register,
