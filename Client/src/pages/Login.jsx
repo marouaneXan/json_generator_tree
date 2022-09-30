@@ -20,7 +20,7 @@ const Login = (props) => {
       const message =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
-        setLoading(false);
+        props.setLoading(false);
         props.setError(message);
         setTimeout(()=>{
           props.setError(null);
@@ -31,11 +31,11 @@ const Login = (props) => {
     if(res && res.data){
       props.setLoading(false)
       props.setSuccess(res.data.message)
+      console.log(res);
       setTimeout(()=>{
-        setSuccess(null);
-        navigate("/dashboard");
+        props.setSuccess(null);
+        // navigate("/dashboard");
       })
-
     }
   };
 
