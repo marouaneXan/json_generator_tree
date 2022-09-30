@@ -5,8 +5,10 @@ const User = require("../Model/userModel");
 //@route /api/v1/auth/register
 //@access public
 const register=async(req,res)=>{
-    const {fName,lName,email,password}=req.body
-    res.send(req.body)
+    const {name,email,password}=req.body
+    if(!name || !email || !password){
+        res.status(400).json('Please add all fields')
+    }
 }
 module.exports={
     register
