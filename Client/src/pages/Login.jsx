@@ -5,13 +5,27 @@ import TextField from "../components/Formik/TextField";
 import { LoginSchema } from "../validation/Login";
 import axios from "axios";
 
+const endPoint = "http://localhost:5000/api/v1/auth/login";
 const Login = (props) => {
   const values = {
     email: "",
     password: "",
   };
   const onSubmit = async (values) => {
-    props.setLoading(true)
+    props.setLoading(true);
+    const { ...data } = values;
+    const res = await axios.post(endPoint, data).catch((err) => {
+      const message =
+        (err.res && err.res.data && err.res.data.message) || err || err.message;
+      if (message) {
+        setLoading(false);
+        props.setError(message);
+        setTimeout(()=>{
+          props.setError(null);
+          props.setLoading(false);
+        })
+      }
+    });
   };
 
   return (
