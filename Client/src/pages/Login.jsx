@@ -1,5 +1,5 @@
 import React from "react";
-import { json, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "../components/Formik/TextField";
 import { LoginSchema } from "../validation/Login";
@@ -22,20 +22,20 @@ const Login = (props) => {
       if (message) {
         props.setLoading(false);
         props.setError(message);
-        setTimeout(()=>{
+        setTimeout(() => {
           props.setError(null);
           props.setLoading(false);
-        },4000)
+        }, 4000);
       }
     });
-    if(res && res.data){
-      props.setLoading(false)
-      props.setSuccess(res.data.message)
-      localStorage.setItem('user_id',JSON.stringify(res.data.id))
-      setTimeout(()=>{
+    if (res && res.data) {
+      props.setLoading(false);
+      props.setSuccess(res.data.message);
+      localStorage.setItem("user_id",res.data.id);
+      setTimeout(() => {
         props.setSuccess(null);
         navigate("/dashboard");
-      },4000)
+      }, 4000);
     }
   };
 

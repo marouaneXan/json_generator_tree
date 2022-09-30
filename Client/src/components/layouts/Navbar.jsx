@@ -9,9 +9,6 @@ const Navbar = ({id}) => {
     const logout=()=>{
         localStorage.clear()
     }
-    useEffect(()=>{
-        logout()
-    })
   return (
     <nav className="bg-[rgb(31,41,55)]">
       <div className="text-white  container flex justify-between items-center p-4 mx-auto">
