@@ -1,14 +1,19 @@
-import React from "react";
+import React,{useContext} from "react";
 import { FaUser } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
-const Navbar = ({id}) => {
+const Navbar = () => {
+  const {id}=useContext(AuthContext)
     const logout=()=>{
         localStorage.clear()
     }
+    useEffect(()=>{
+        logout()
+    })
   return (
     <nav className="bg-[rgb(31,41,55)]">
       <div className="text-white  container flex justify-between items-center p-4 mx-auto">

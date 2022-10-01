@@ -1,39 +1,50 @@
-import React from "react";
-import {Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "../components/Formik/TextField";
 import { LoginSchema } from "../validation/Login";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../Context/AuthContext";
 
 const endPoint = "http://localhost:5000/api/v1/auth/login";
-const Login = (props) => {
+const Login = () => {
+  const {
+    id,
+    setId,
+    loading,
+    setLoading,
+    success,
+    setSuccess,
+    error,
+    setError,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
   const values = {
     email: "",
     password: "",
   };
   const onSubmit = async (values) => {
-    props.setLoading(true);
+    setLoading(true);
     const { ...data } = values;
     const res = await axios.post(endPoint, data).catch((err) => {
       const message =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
-        props.setLoading(false);
-        props.setError(message);
+        setLoading(false);
+        setError(message);
         setTimeout(() => {
-          props.setError(null);
-          props.setLoading(false);
+          setError(null);
+          setLoading(false);
         }, 4000);
       }
     });
     if (res && res.data) {
-      props.setLoading(false);
-      props.setSuccess(res.data.message);
-      localStorage.setItem("user_id",res.data.id);
+      setLoading(false);
+      setSuccess(res.data.message);
+      localStorage.setItem("user_id",res.data.id)
       setTimeout(() => {
-        props.setSuccess(null);
+        setSuccess(null);
         navigate("/dashboard");
       }, 4000);
     }
