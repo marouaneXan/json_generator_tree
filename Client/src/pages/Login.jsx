@@ -41,8 +41,8 @@ const Login = () => {
     });
     if (res && res.data) {
       setLoading(false);
-      setSuccess(res.data.message);
-      localStorage.setItem("user_id",res.data.id)
+      setSuccess(res.data.message)
+      localStorage.setItem('user_id',res.data.id)
       setTimeout(() => {
         setSuccess(null);
         navigate("/dashboard");
