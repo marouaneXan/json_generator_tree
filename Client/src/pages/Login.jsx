@@ -6,6 +6,7 @@ import { LoginSchema } from "../validation/Login";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
+import { useEffect } from "react";
 
 const endPoint = "http://localhost:5000/api/v1/auth/login";
 const Login = () => {
@@ -24,6 +25,9 @@ const Login = () => {
     email: "",
     password: "",
   };
+  // useEffect(()=>{
+  //   id ? navigate('/dashboard'):''
+  // },[id])
   const onSubmit = async (values) => {
     setLoading(true);
     const { ...data } = values;
@@ -41,8 +45,8 @@ const Login = () => {
     });
     if (res && res.data) {
       setLoading(false);
-      setSuccess(res.data.message)
-      localStorage.setItem('user_id',res.data.id)
+      setSuccess(res.data.message);
+      setId(localStorage.setItem("user_id", JSON.stringify(res.data.id)));
       setTimeout(() => {
         setSuccess(null);
         navigate("/dashboard");
