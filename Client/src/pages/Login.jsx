@@ -11,7 +11,8 @@ import LoginAlerts from "../components/Alerts/LoginAlert";
 const endPoint = "http://localhost:5000/api/v1/auth/login";
 const Login = () => {
   const {
-    connected,setConnected,
+    connected,
+    setConnected,
     id,
     setId,
     loading,
@@ -47,14 +48,13 @@ const Login = () => {
     if (res && res.data) {
       setLoading(false);
       setSuccess(res.data.message);
-      setId(localStorage.setItem("user_id", JSON.stringify(res.data.id)));
-      localStorage.setItem("logged", true);
-        setConnected(true);
       setTimeout(() => {
         setSuccess(null);
-        // window.location.reload(true);
         navigate("/dashboard");
-      }, 4000);
+        setId(localStorage.setItem("user_id", JSON.stringify(res.data.id)));
+        localStorage.setItem("logged", true);
+        setConnected(true);
+      }, 5000);
     }
   };
 
@@ -98,7 +98,7 @@ const Login = () => {
                     disabled={loading}
                     className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white w-full dark:hover:bg-gray-700"
                   >
-                    Sign In{loading && '...'}
+                    Sign In{loading && "..."}
                   </button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                     Don’t have an account yet?{" "}
