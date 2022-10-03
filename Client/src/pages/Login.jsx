@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "../components/Formik/TextField";
@@ -27,9 +27,9 @@ const Login = () => {
     email: "",
     password: "",
   };
-  // useEffect(()=>{
-  //   id ? navigate('/dashboard'):''
-  // },[id])
+  useEffect(() => {
+    connected ? navigate("/dashboard") : "";
+  }, [connected]);
   const onSubmit = async (values) => {
     setLoading(true);
     const { ...data } = values;
@@ -38,7 +38,7 @@ const Login = () => {
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
         setLoading(false);
-        setError(true);
+        setError(message.response.data.message);
         setTimeout(() => {
           setError(null);
           setLoading(false);

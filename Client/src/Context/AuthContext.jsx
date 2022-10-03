@@ -7,7 +7,7 @@ const AuthContextProvider = ({ children }) => {
   const [connected, setConnected] = useState(localStorage.getItem("logged"));
   const [id, setId] = useState(localStorage.getItem("user_id"));
   const [success, setSuccess] = useState(null);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   //logout
