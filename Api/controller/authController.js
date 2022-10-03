@@ -28,7 +28,7 @@ const register = asyncHandler(async (req, res) => {
     password: hashedPassword,
   });
   if (user) {
-    res.status(200).json(user)
+    res.status(200).json(user);
   }
 });
 
@@ -36,24 +36,34 @@ const register = asyncHandler(async (req, res) => {
 //@route /api/v1/auth/login
 //@access public
 const login = asyncHandler(async (req, res) => {
-  const {email,password}=req.body
-  if(!email || !password){
-    res.status(400)
-    throw new Error('Please add all fields')
+  if (!req.body.email || !req.body.password) {
+    res.status(400);
+    throw new Error("Please add all fields");
   }
-  const user=await User.findOne({email})
-  const verifyPassword=await bcrypt.compare(password,user.password)
-  if(user && verifyPassword){
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) {
+    res.status(400);
+    throw new Error("User not found");
+  }
+  const isPasswordCorrect = await bcrypt.compare(
+    req.body.password,
+    user.password
+  );
+  if (!isPasswordCorrect) {
+    res.status(400);
+    throw new Error("Password is incorrect");
+  }
+  if (user && isPasswordCorrect) {
     res.status(201).json({
-      message:"Login successfully",
-      id:user._id
-    })
-  }else{
-    res.status(400)
+      message: "Login successfully",
+      id: user._id,
+    });
+  } else {
+    res.status(400);
     throw new Error("Invalid user data");
   }
 });
 module.exports = {
   register,
-  login
+  login,
 };

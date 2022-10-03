@@ -1,21 +1,28 @@
 import { useMemo, createContext, useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext(null);
 const AuthContextProvider = ({ children }) => {
-  const navigate = useNavigate()
-  const [connected,setConnected]=useState(localStorage.getItem("logged"))
+  //State
+  const navigate = useNavigate();
+  const [connected, setConnected] = useState(localStorage.getItem("logged"));
   const [id, setId] = useState(localStorage.getItem("user_id"));
   const [success, setSuccess] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  //logout
   const logout = () => {
     localStorage.clear();
-    setConnected(false)
-    navigate('/login')
+    setTimeout(() => {
+      setConnected(false);
+      navigate("/login");
+    }, 3000);
   };
+
   const values = useMemo(
     () => ({
-      connected,setConnected,
+      connected,
+      setConnected,
       id,
       setId,
       loading,
@@ -24,9 +31,20 @@ const AuthContextProvider = ({ children }) => {
       setSuccess,
       error,
       setError,
-      logout
+      logout,
     }),
-    [connected,setConnected, id, setId, loading, setLoading, success, setSuccess, error, setError]
+    [
+      connected,
+      setConnected,
+      id,
+      setId,
+      loading,
+      setLoading,
+      success,
+      setSuccess,
+      error,
+      setError,
+    ]
   );
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
