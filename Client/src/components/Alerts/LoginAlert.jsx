@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { UserContext } from '../../Context/User'
+import { AuthContext } from '../../Context/AuthContext'
 
-const RegisterAlerts = () => {
-    const {success,error}=useContext(UserContext)
+const LoginAlerts = () => {
+    const {success,error}=useContext(AuthContext)
   return (
     <>
         {error && (
@@ -10,7 +10,7 @@ const RegisterAlerts = () => {
             className="p-4 w-full text-center mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
             role="alert"
           >
-            This Email is Already Taken
+            Invalid User Information
           </div>
         )}
         {success && (
@@ -25,4 +25,4 @@ const RegisterAlerts = () => {
   )
 }
 
-export default RegisterAlerts
+export default LoginAlerts

@@ -7,19 +7,17 @@ import { useEffect } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
-  const { id,logout } = useContext(AuthContext);
-
-  
+  const { connected,logout } = useContext(AuthContext);
   
   return (
     <nav className="bg-[rgb(31,41,55)]">
       <div className="text-white  container flex justify-between items-center p-4 mx-auto">
-        <Link to={id ? "/dashboard" : "/register"}>
+        <Link to={connected ? "/dashboard" : "/register"}>
           <h5 className="font-medium font-[cursive] md:text-xl">
             Json-Generator-Tree
           </h5>
         </Link>
-        {id ? (
+        {connected ? (
           <button
             type="button"
             onClick={logout}
