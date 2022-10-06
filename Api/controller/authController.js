@@ -28,7 +28,10 @@ const register = asyncHandler(async (req, res) => {
     password: hashedPassword,
   });
   if (user) {
-    res.status(200).json(user);
+    res.status(200).json({
+      message:'Account created successfully',
+      id:user._id
+    });
   }
 });
 
