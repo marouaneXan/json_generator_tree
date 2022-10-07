@@ -15,7 +15,7 @@ const AuthContextProvider = ({ children }) => {
     localStorage.clear();
     setTimeout(() => {
       setConnected(false);
-      navigate("/login");
+      navigate("/");
     }, 3000);
   };
 
