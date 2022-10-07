@@ -39,7 +39,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center space-y-6 md:justify-between md:space-y-0 md:space-x-6 p-8 md:flex-row">
+    <div className="flex flex-col bg-gray-50 dark:bg-gray-900 justify-center space-y-6 md:justify-between md:space-y-0 md:space-x-6 p-8 md:flex-row">
       <form className="w-full">
         <textarea
           onChange={(e) => {
