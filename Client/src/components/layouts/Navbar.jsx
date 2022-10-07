@@ -14,7 +14,7 @@ const Navbar = () => {
       {location.pathname !== "/" && (
         <nav className="bg-[rgb(31,41,55)]">
           <div className="text-white  container flex justify-between items-center p-4 mx-auto">
-            <Link to={connected ? "/dashboard" : "/register"}>
+            <Link to={connected ? "/dashboard" : "/"}>
               <h5 className="font-medium font-[cursive] md:text-xl">
                 Json-Generator-Tree
               </h5>
